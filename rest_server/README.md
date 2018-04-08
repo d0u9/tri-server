@@ -12,7 +12,7 @@ pip install gunicorn
 # Run
 
 ```
-gunicorn -w 3 --reload rest_server.app
+gunicorn -w 3 --reload --bind 0.0.0.0 rest_server.app
 ```
 
 # Supported Operations
@@ -53,27 +53,4 @@ Umount a specific disk by label.
 
     **Content:** `{ error: "<error msg>" }`
 
-## Umount all disks
-
-Umount all disks if possible.
-
-- **URL**
-
-    /umount_all
-
-- **Method**
-
-    `GET`
-
-- **Success Response**
-
-    **Code:** 200
-
-    **Content:** `{ status: "OK" }`
-
-- **Error Response**
-
-    **Code:** 404 NOT FOUND
-
-    **Content:** `{ error: "Disk doesn't exist" }`
 

@@ -4,9 +4,12 @@ After=network.target
 
 [Service]
 Type=simple
-PIDFile=/run/rest_server/pid
 User=pyenv
 Group=app
+PermissionsStartOnly=true
+ExecStartPre=-/bin/mkdir /run/rest_server
+ExecStartPre=-/bin/chown pyenv:app /run/rest_server
+PIDFile=/run/rest_server/pid
 Environment=PATH=/home/pyenv/.pyenv/versions/rest_server/bin:$PATH
 ExecStart=/home/pyenv/.pyenv/versions/rest_server/bin/gunicorn \
           --pid /run/rest_server/pid \

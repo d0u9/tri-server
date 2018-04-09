@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEMS=="usb", KERNEL=="sd[b-z][0-9]", ENV{ID_FS_LABEL}=="Movies|Videos|Games|Backup_all", RUN+="/usr/local/bin/tri-mount /dev/%k $env{ID_FS_LABEL}"
+ACTION=="remove", SUBSYSTEMS=="usb", KERNEL=="sd[b-z][0-9]", ENV{ID_FS_LABEL}=="Movies|Videos|Games|Backup_all", RUN+="/bin/umount -f /dev/%k"

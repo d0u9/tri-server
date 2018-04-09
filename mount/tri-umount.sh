@@ -26,7 +26,7 @@ fi
 
 docker ps | grep samba > /dev/null 2>&1
 if [ "$?" == "0" ]; then
-    docker exec -it samba close ${mnt_dict[$mnt_path]}
+    docker exec samba close ${mnt_dict[$mnt_path]}
 fi
 
 /bin/umount $mnt_path

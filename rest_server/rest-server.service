@@ -1,0 +1,17 @@
+[Unit]
+Description=Restful Server Daemon
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/rest_server/pid
+User=pyenv
+Group=app
+Environment=PATH=/home/pyenv/.pyenv/versions/rest_server/bin:$PATH
+ExecStart=/home/pyenv/.pyenv/versions/rest_server/bin/gunicorn \
+          --pid /run/rest_server/pid \
+          --chdir /opt/app/rest_server/ \
+          --bind 0.0.0.0:8080 rest_server.app
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl stop frpc_samba.service
+systemctl status frpc_samba.service

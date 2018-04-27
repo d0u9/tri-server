@@ -5,7 +5,9 @@ import logging
 import falcon
 
 from logging.handlers import RotatingFileHandler
+
 from .umount import Umount
+from .stats import Stats
 
 log_formatter = logging.Formatter('[%(asctime)s] [%(process)d] [%(levelname)s] %(message)s', '%Y-%m-%d %H:%M:%S %z')
 
@@ -28,6 +30,8 @@ logger.warn('Starting...')
 app = application = falcon.API()
 
 umount = Umount()
+stats = Stats()
 
 app.add_route('/umount/{label}', umount)
+app.add_route('/stats/{resource}', stats)
 

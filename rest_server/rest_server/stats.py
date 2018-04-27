@@ -79,7 +79,7 @@ class Stats(object):
                     # tuple of (ipaddress, netmask, broadcast)
                     dev['ipv4'].append((addr[1], addr[2], addr[3]))
 
-                if addr[0] == addr[0].AF_LINK:
+                if addr[0] == 17:
                     dev['addr'] = addr[1]
 
             if dev['ipv4'] == []:
